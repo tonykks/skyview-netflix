@@ -1,0 +1,145 @@
+/* 전체 페이지 기본 설정 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  background-color: #141414;
+  color: #e5e5e5;
+  line-height: 1.5;
+}
+
+/* 상단 헤더 */
+.site-header {
+  padding: 16px 24px;
+  background-color: #000000;
+  border-bottom: 1px solid #333333;
+}
+
+.logo {
+  color: #e50914;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: #b3b3b3;
+  margin-top: 4px;
+}
+
+/* 배너: 높이는 .banner-img(실제 이미지)에 맞춰짐 */
+.banner {
+  position: relative;
+  background-color: #0b0b0b;
+}
+
+/* 가로 폭에 맞추고, 세로는 비율대로 전체 표시 */
+.banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 글 읽기용: 아래쪽만 살짝 어둡게 */
+.banner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55%;
+  background: linear-gradient(
+    to top,
+    #141414 0%,
+    rgba(20, 20, 20, 0.55) 40%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.banner-text {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 0;
+  max-width: 560px;
+  padding-bottom: 36px;
+  padding-top: 24px;
+  z-index: 1;
+}
+
+.banner-text h2 {
+  font-size: 1.75rem;
+  margin-bottom: 8px;
+}
+
+.banner-text p {
+  color: #d0d0d0;
+  font-size: 1rem;
+}
+
+/* 영상 줄(섹션) */
+.row {
+  padding: 8px 24px 48px;
+}
+
+.row-title {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+/* 카드들을 가로로 나열 (작은 화면에서는 아래로 쌓임) */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* 각 영상 카드 */
+.card {
+  flex: 1 1 220px;
+  max-width: 280px;
+  background-color: #1f1f1f;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #2a2a2a;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card h3 {
+  font-size: 1rem;
+  padding: 12px 12px 4px;
+  color: #ffffff;
+}
+
+.card p {
+  font-size: 0.85rem;
+  padding: 0 12px 14px;
+  color: #b3b3b3;
+}
+
+/* 하단 푸터 */
+.site-footer {
+  padding: 24px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #808080;
+  border-top: 1px solid #2a2a2a;
+  background-color: #0b0b0b;
+}
