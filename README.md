@@ -32,7 +32,7 @@
 
 | 영역 | 내용 |
 |------|------|
-| **헤더** | 로고(`TONY SKYVIEW` → `index.html`), 부제(SkyViewism 문구), 영문 모토 + `star_light.png`, **메뉴**(홈·최근 업로드·추천·장소별·About) |
+| **헤더** | 로고(`TONY SKYVIEW` → `index.html`), 부제(SkyViewism 문구), 영문 모토 + `star_light.png`, **메뉴**(홈·추천영상·장소별보기·shorts·about) |
 | **히어로** | 대표 이미지 `songak.png`, 뱃지·제목·3줄 설명·메타·**재생 / 상세 정보** 버튼(`href="#"`) |
 | **추천 드론 영상** | `id="recommended"` — 카드 5개 |
 | **최신 드론 영상** | `id="latest"` — 카드 5개(별도 장소·파일명) |
@@ -41,9 +41,8 @@
 ### 내비게이션(같은 페이지 내 이동)
 
 - **홈** → `index.html`
-- **최근 업로드** → `#latest`
-- **추천 영상** → `#recommended`
-- **장소별 보기**, **About** → `#`(추후 확장용)
+- **추천영상** → `#recommended`
+- **장소별보기**, **shorts**, **about** → `#`(추후 확장용)
 
 `styles.css`의 `#recommended`, `#latest`에 `scroll-margin-top`을 두어 앵커 이동 시 제목이 잘 보이도록 했습니다.
 
