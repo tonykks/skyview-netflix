@@ -8,25 +8,62 @@
   </head>
   <body>
     <header class="site-header">
-      <h1 class="logo">TONY SKYVIEW</h1>
-      <p class="tagline">개인 드론 영상 모음</p>
+      <div class="header-inner">
+        <div class="header-brand">
+          <a class="logo" href="index.html">TONY SKYVIEW</a>
+          <p class="tagline">
+            SkyViewism — 하늘의 시선으로 세상을 다시 바라봅니다
+          </p>
+        </div>
+        <p class="header-motto" lang="en">
+          <span class="motto-we-wrap">
+            <img
+              class="motto-star"
+              src="images/star_light.png"
+              alt=""
+            />
+            <span class="motto-we">We</span>
+          </span>
+          see better when we rise above.
+        </p>
+        <nav class="main-nav" aria-label="주요 메뉴">
+          <a href="index.html">홈</a>
+          <a href="#latest">최근 업로드</a>
+          <a href="#recommended">추천 영상</a>
+          <a href="#">장소별 보기</a>
+          <a href="#">About</a>
+        </nav>
+      </div>
     </header>
 
     <main>
-      <section class="banner" aria-label="대표 배너">
-        <!-- 배너 높이는 이미지 비율에 맞춰 자동(잘리지 않음) -->
+      <section class="banner" aria-label="대표 영상 배너">
         <img
           class="banner-img"
           src="images/songak.png"
           alt="송악산 해안 드론 촬영 풍경"
         />
         <div class="banner-text">
-          <h2>송악산, 바다 위의 녹색 무대</h2>
-          <p>제주 해안을 내려다본 드론 영상을 만나보세요.</p>
+          <p class="hero-badge">대표 영상</p>
+          <h1 class="hero-title">송악산, 바다 위의 녹색 무대</h1>
+          <p class="hero-desc">
+            제주 송악산 일대를 드론으로 담았습니다.<br />
+            해안 절벽과 바다가 이어지는 풍경을<br />
+            하늘의 시선으로 기록합니다.
+          </p>
+          <div class="hero-meta" aria-label="영상 정보">
+            <span class="meta-pill">드론 영상</span>
+            <span>2026</span>
+            <span>자연 · 항공 촬영</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn--play" href="#">▶ 재생</a>
+            <a class="btn btn--info" href="#">ⓘ 상세 정보</a>
+          </div>
         </div>
       </section>
 
-      <section class="row" aria-label="추천 영상">
+      <section class="row" id="recommended" aria-label="추천 영상">
         <h2 class="row-title">추천 드론 영상</h2>
         <div class="cards">
           <article class="card">
@@ -69,7 +106,6 @@
             <h3>범섬 해식동굴</h3>
             <p>절벽 안쪽의 숨은 공간</p>
           </article>
-          <!-- 새 카드: tafoni.jpg -->
           <article class="card">
             <img
               src="images/tafoni.jpg"
@@ -82,10 +118,66 @@
           </article>
         </div>
       </section>
+
+      <section class="row row--latest" id="latest" aria-label="최신 영상">
+        <h2 class="row-title">최신 드론 영상</h2>
+        <div class="cards">
+          <article class="card">
+            <img
+              src="images/daryeodo-heron.jpg"
+              alt="다려도의 외가리 드론 촬영 썸네일"
+              width="400"
+              height="225"
+            />
+            <h3>다려도의 외가리</h3>
+            <p>바다 절벽 위를 지키는 새의 시선</p>
+          </article>
+          <article class="card">
+            <img
+              src="images/munseom-columns.jpg"
+              alt="문섬 주상절리 드론 촬영 썸네일"
+              width="400"
+              height="225"
+            />
+            <h3>문섬 주상절리</h3>
+            <p>바다 위에 새겨진 용암의 흔적</p>
+          </article>
+          <article class="card">
+            <img
+              src="images/chagwido-rocks.jpg"
+              alt="차귀도의 바위 드론 촬영 썸네일"
+              width="400"
+              height="225"
+            />
+            <h3>차귀도의 바위</h3>
+            <p>파도와 바람이 만든 해안 구조</p>
+          </article>
+          <article class="card">
+            <img
+              src="images/seopseom.jpg"
+              alt="섶섬 드론 촬영 썸네일"
+              width="400"
+              height="225"
+            />
+            <h3>섶섬</h3>
+            <p>해안 절벽과 숲이 만나는 섬</p>
+          </article>
+          <article class="card">
+            <img
+              src="images/sanbang-mountain.jpg"
+              alt="산방산 드론 촬영 썸네일"
+              width="400"
+              height="225"
+            />
+            <h3>산방산</h3>
+            <p>구름 아래 떠 있는 용암의 산</p>
+          </article>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
-      <p>© 2026 Tony Skyview. HTML/CSS Practice Project.</p>
+      <p>© 2026 Tony Skyview. Drone Archive of Jeju.</p>
     </footer>
   </body>
 </html>

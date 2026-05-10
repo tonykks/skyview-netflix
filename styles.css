@@ -12,23 +12,116 @@ body {
   line-height: 1.5;
 }
 
-/* 상단 헤더 */
+/* 상단 헤더 (로고 + 가로 메뉴) */
 .site-header {
-  padding: 16px 24px;
+  padding: 14px 24px;
   background-color: #000000;
   border-bottom: 1px solid #333333;
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px 20px;
+}
+
+.header-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-self: start;
+  min-width: 0;
 }
 
 .logo {
   color: #e50914;
   font-size: 1.5rem;
+  font-weight: 700;
   letter-spacing: 2px;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: #f40612;
 }
 
 .tagline {
-  font-size: 0.9rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
   color: #b3b3b3;
-  margin-top: 4px;
+  margin: 0;
+  max-width: 22rem;
+}
+
+/* 헤더 정가운데 모토 — 글자 크기는 .logo(1.5rem)와 동일 */
+.header-motto {
+  justify-self: center;
+  margin: 0;
+  padding: 0.15rem 8px 0;
+  max-width: min(100%, 36rem);
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  color: #ffffff;
+  text-align: center;
+  text-shadow:
+    0 0 24px rgba(255, 255, 255, 0.35),
+    0 0 20px rgba(229, 9, 20, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+/* "We" 위 별빛(스프라이트 2×3 중 아래 가운데 셀만 표시) */
+.motto-we-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+/* W 앞·왼쪽에서 약간 위로 비추는 위치(글줄 높이의 중앙 기준) */
+.motto-star {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 50%;
+  width: 2em;
+  height: auto;
+  display: block;
+  transform: translate(-78%, -58%);
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.95))
+    drop-shadow(0 0 14px rgba(255, 255, 255, 0.55));
+  pointer-events: none;
+}
+
+.motto-we {
+  position: relative;
+  z-index: 1;
+  text-shadow:
+    0 0 18px rgba(255, 255, 255, 0.45),
+    0 0 8px rgba(255, 255, 255, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.85);
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px 20px;
+  justify-self: end;
+}
+
+.main-nav a {
+  color: #e5e5e5;
+  font-size: 0.9rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.main-nav a:hover {
+  color: #b3b3b3;
 }
 
 /* 데스크톱(769px~): 이미지 비율 그대로, 넓은 히어로 느낌 */
@@ -67,15 +160,29 @@ body {
   left: 24px;
   right: 24px;
   bottom: 0;
-  max-width: 560px;
+  max-width: 640px;
   padding-top: 24px;
   padding-bottom: 36px;
 }
 
-/* 배경 박스 없이: 테두리 느낌 그림자 + 번짐으로 밝은 배경에서도 읽기 */
-.banner-text h2 {
-  font-size: 1.75rem;
-  margin-bottom: 8px;
+.hero-badge {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 4px 10px;
+  background-color: #e50914;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+  text-shadow: none;
+}
+
+/* 대표 영상 제목 (페이지 유일 h1) */
+.hero-title {
+  margin: 0 0 10px;
+  font-size: 2.1rem;
+  line-height: 1.2;
   color: #ffffff;
   text-shadow:
     -1px -1px 0 rgba(0, 0, 0, 0.9),
@@ -86,10 +193,11 @@ body {
     0 4px 28px rgba(0, 0, 0, 0.55);
 }
 
-/* 제목과 살짝 다른 톤(연한 아이보리) + 같은 계열 그림자 */
-.banner-text p {
-  color: #f5f0e8;
+.hero-desc {
+  margin: 0 0 14px;
   font-size: 1rem;
+  line-height: 1.55;
+  color: #f5f0e8;
   text-shadow:
     -1px -1px 0 rgba(0, 0, 0, 0.85),
     1px -1px 0 rgba(0, 0, 0, 0.85),
@@ -99,9 +207,75 @@ body {
     0 3px 20px rgba(0, 0, 0, 0.5);
 }
 
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin-bottom: 18px;
+  font-size: 0.88rem;
+  color: #e5e5e5;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+}
+
+.meta-pill {
+  padding: 2px 8px;
+  background-color: rgba(42, 42, 42, 0.95);
+  border: 1px solid #5c5c5c;
+  border-radius: 2px;
+  font-size: 0.78rem;
+  color: #dcdcdc;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.btn--play {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.btn--play:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.btn--info {
+  background-color: rgba(109, 109, 110, 0.55);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.btn--info:hover {
+  background-color: rgba(109, 109, 110, 0.75);
+}
+
 /* 영상 줄(섹션) */
 .row {
   padding: 8px 24px 48px;
+}
+
+/* 메뉴(#recommended, #latest)로 이동할 때 살짝 여백 */
+#recommended,
+#latest {
+  scroll-margin-top: 12px;
 }
 
 .row-title {
@@ -110,6 +284,14 @@ body {
   margin-bottom: 18px;
   color: #ffffff;
   letter-spacing: 0.02em;
+}
+
+/* 추천 / 최신 영상 사이 구분 (어두운 톤 + 얇은 선) */
+.row--latest {
+  border-top: 1px solid #2a2a2a;
+  padding-top: 36px;
+  margin-top: 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 /* 카드들을 가로로 나열 (작은 화면에서는 아래로 쌓임) */
@@ -169,15 +351,54 @@ body {
     padding: 12px 16px;
   }
 
+  .header-inner {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+    gap: 14px;
+  }
+
+  .header-brand {
+    justify-self: start;
+  }
+
+  .header-motto {
+    justify-self: center;
+    order: 0;
+    width: 100%;
+    max-width: none;
+    font-size: 1.2rem;
+    letter-spacing: 0.03em;
+    padding: 14px 12px 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.04) 20%,
+      rgba(255, 255, 255, 0.04) 80%,
+      transparent
+    );
+  }
+
+  .main-nav {
+    width: 100%;
+    justify-content: flex-start;
+    justify-self: start;
+    gap: 8px 14px;
+  }
+
+  .main-nav a {
+    font-size: 0.85rem;
+  }
+
   .logo {
     font-size: 1.2rem;
     letter-spacing: 1px;
   }
 
-  /* 로고와 부제 사이 살짝 띄움 */
   .tagline {
-    font-size: 0.8rem;
-    margin-top: 8px;
+    font-size: 0.72rem;
+    max-width: none;
   }
 
   /* 배너 글 영역을 덜 크게 */
@@ -189,22 +410,44 @@ body {
     max-width: 100%;
   }
 
-  /* 제목: 작게 + 줄 간격으로 줄 겹침 방지, 짧은 문장은 보통 2줄 안쪽 */
-  .banner-text h2 {
-    font-size: clamp(1rem, 4.2vw, 1.2rem);
+  .hero-badge {
+    margin-bottom: 8px;
+    font-size: 0.65rem;
+    padding: 3px 8px;
+  }
+
+  /* 제목: 작게 + 줄 간격으로 줄 겹침 방지 */
+  .hero-title {
+    font-size: clamp(1.05rem, 4.2vw, 1.35rem);
     line-height: 1.35;
     margin-bottom: 6px;
   }
 
-  .banner-text p {
+  .hero-desc {
     font-size: 0.875rem;
     line-height: 1.45;
+    margin-bottom: 10px;
   }
 
-  /* 모바일·태블릿: 카드 높이에 맞춤, 이미지는 cover로 잘림 */
+  .hero-meta {
+    font-size: 0.78rem;
+    margin-bottom: 12px;
+    gap: 6px 10px;
+  }
+
+  .hero-actions {
+    gap: 8px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  /* 모바일·태블릿: 카드 높이에 맞춤, 이미지는 cover로 잘림 (버튼·메타 여유) */
   .banner {
     overflow: hidden;
-    height: calc((100vw - 32px) * 9 / 16 + 6rem);
+    height: calc((100vw - 32px) * 9 / 16 + 9rem);
   }
 
   .banner-img {
@@ -224,6 +467,11 @@ body {
 
   .row {
     padding: 6px 16px 36px;
+  }
+
+  .row--latest {
+    padding-top: 28px;
+    margin-top: 12px;
   }
 
   /* 섹션 제목은 카드 제목(약 0.95rem)보다 확실히 크게 */
@@ -261,7 +509,7 @@ body {
 
 /* 더 좁은 폭: 히어로 제목이 2줄 안에 들어가도록 한 번 더 축소 */
 @media (max-width: 400px) {
-  .banner-text h2 {
+  .hero-title {
     font-size: 0.95rem;
   }
 }
