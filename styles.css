@@ -31,23 +31,23 @@ body {
   margin-top: 4px;
 }
 
-/* 배너: 높이는 .banner-img(실제 이미지)에 맞춰짐 */
+/* 데스크톱(769px~): 이미지 비율 그대로, 넓은 히어로 느낌 */
 .banner {
   position: relative;
   background-color: #0b0b0b;
 }
 
-/* 가로 폭에 맞추고, 세로는 비율대로 전체 표시 */
 .banner-img {
   width: 100%;
   height: auto;
   display: block;
 }
 
-/* 글 읽기용: 아래쪽만 살짝 어둡게 */
+/* 글 읽기용: 아래쪽만 살짝 어둡게 (이미지 위, 글 아래) */
 .banner::after {
   content: "";
   position: absolute;
+  z-index: 1;
   left: 0;
   right: 0;
   bottom: 0;
@@ -63,23 +63,40 @@ body {
 
 .banner-text {
   position: absolute;
+  z-index: 2;
   left: 24px;
   right: 24px;
   bottom: 0;
   max-width: 560px;
-  padding-bottom: 36px;
   padding-top: 24px;
-  z-index: 1;
+  padding-bottom: 36px;
 }
 
+/* 배경 박스 없이: 테두리 느낌 그림자 + 번짐으로 밝은 배경에서도 읽기 */
 .banner-text h2 {
   font-size: 1.75rem;
   margin-bottom: 8px;
+  color: #ffffff;
+  text-shadow:
+    -1px -1px 0 rgba(0, 0, 0, 0.9),
+    1px -1px 0 rgba(0, 0, 0, 0.9),
+    -1px 1px 0 rgba(0, 0, 0, 0.9),
+    1px 1px 0 rgba(0, 0, 0, 0.9),
+    0 2px 16px rgba(0, 0, 0, 0.85),
+    0 4px 28px rgba(0, 0, 0, 0.55);
 }
 
+/* 제목과 살짝 다른 톤(연한 아이보리) + 같은 계열 그림자 */
 .banner-text p {
-  color: #d0d0d0;
+  color: #f5f0e8;
   font-size: 1rem;
+  text-shadow:
+    -1px -1px 0 rgba(0, 0, 0, 0.85),
+    1px -1px 0 rgba(0, 0, 0, 0.85),
+    -1px 1px 0 rgba(0, 0, 0, 0.85),
+    1px 1px 0 rgba(0, 0, 0, 0.85),
+    0 2px 12px rgba(0, 0, 0, 0.8),
+    0 3px 20px rgba(0, 0, 0, 0.5);
 }
 
 /* 영상 줄(섹션) */
@@ -88,9 +105,11 @@ body {
 }
 
 .row-title {
-  font-size: 1.1rem;
-  margin-bottom: 16px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 18px;
   color: #ffffff;
+  letter-spacing: 0.02em;
 }
 
 /* 카드들을 가로로 나열 (작은 화면에서는 아래로 쌓임) */
@@ -142,4 +161,107 @@ body {
   color: #808080;
   border-top: 1px solid #2a2a2a;
   background-color: #0b0b0b;
+}
+
+/* 모바일: 글자·여백만 줄여서 겹침·답답함 완화 (768px 이하) */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 12px 16px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  /* 로고와 부제 사이 살짝 띄움 */
+  .tagline {
+    font-size: 0.8rem;
+    margin-top: 8px;
+  }
+
+  /* 배너 글 영역을 덜 크게 */
+  .banner-text {
+    left: 16px;
+    right: 16px;
+    padding-top: 12px;
+    padding-bottom: 20px;
+    max-width: 100%;
+  }
+
+  /* 제목: 작게 + 줄 간격으로 줄 겹침 방지, 짧은 문장은 보통 2줄 안쪽 */
+  .banner-text h2 {
+    font-size: clamp(1rem, 4.2vw, 1.2rem);
+    line-height: 1.35;
+    margin-bottom: 6px;
+  }
+
+  .banner-text p {
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+
+  /* 모바일·태블릿: 카드 높이에 맞춤, 이미지는 cover로 잘림 */
+  .banner {
+    overflow: hidden;
+    height: calc((100vw - 32px) * 9 / 16 + 6rem);
+  }
+
+  .banner-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .banner::after {
+    height: 48%;
+  }
+
+  .row {
+    padding: 6px 16px 36px;
+  }
+
+  /* 섹션 제목은 카드 제목(약 0.95rem)보다 확실히 크게 */
+  .row-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .cards {
+    gap: 12px;
+  }
+
+  /* 한 줄에 카드 1개 */
+  .card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .card h3 {
+    font-size: 0.95rem;
+    padding: 10px 12px 4px;
+  }
+
+  .card p {
+    font-size: 0.8rem;
+    padding: 0 12px 12px;
+  }
+
+  .site-footer {
+    padding: 18px 16px;
+    font-size: 0.8rem;
+  }
+}
+
+/* 더 좁은 폭: 히어로 제목이 2줄 안에 들어가도록 한 번 더 축소 */
+@media (max-width: 400px) {
+  .banner-text h2 {
+    font-size: 0.95rem;
+  }
 }
