@@ -366,9 +366,10 @@ body {
     order: 0;
     width: 100%;
     max-width: none;
-    font-size: 1.2rem;
-    letter-spacing: 0.03em;
-    padding: 14px 12px 10px;
+    /* 메뉴보다 한 단계 크게(가독성), 한 줄에 가깝게 자간만 살짝 */
+    font-size: 1rem;
+    letter-spacing: 0.006em;
+    padding: 14px 6px 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     background: linear-gradient(
@@ -388,7 +389,7 @@ body {
   }
 
   .main-nav a {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .logo {
@@ -507,9 +508,21 @@ body {
   }
 }
 
-/* 더 좁은 폭: 히어로 제목이 2줄 안에 들어가도록 한 번 더 축소 */
+/* 더 좁은 폭 */
 @media (max-width: 400px) {
   .hero-title {
     font-size: 0.95rem;
+  }
+
+  .header-motto {
+    font-size: 0.93rem;
+    letter-spacing: 0.004em;
+  }
+}
+
+/* 매우 좁은 폭: 모토 한 줄 우선 */
+@media (max-width: 340px) {
+  .header-motto {
+    font-size: 0.88rem;
   }
 }
